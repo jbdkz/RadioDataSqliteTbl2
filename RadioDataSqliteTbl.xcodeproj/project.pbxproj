@@ -7,14 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		550AD9C21F290F9F00C8EA72 /* CreateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550AD9C11F290F9F00C8EA72 /* CreateEditViewController.swift */; };
 		B1D05B4B1F24E2D00052F8D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D05B4A1F24E2D00052F8D9 /* AppDelegate.swift */; };
 		B1D05B4D1F24E2D00052F8D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D05B4C1F24E2D00052F8D9 /* ViewController.swift */; };
 		B1D05B501F24E2D00052F8D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D05B4E1F24E2D00052F8D9 /* Main.storyboard */; };
 		B1D05B521F24E2D00052F8D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1D05B511F24E2D00052F8D9 /* Assets.xcassets */; };
 		B1D05B551F24E2D00052F8D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D05B531F24E2D00052F8D9 /* LaunchScreen.storyboard */; };
+		B1D05B5D1F251AB40052F8D9 /* DBAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D05B5C1F251AB40052F8D9 /* DBAccess.swift */; };
+		B1D05B601F251BA00052F8D9 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D05B5F1F251BA00052F8D9 /* libsqlite3.tbd */; };
+		B1D05B681F25972F0052F8D9 /* CellDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D05B671F25972F0052F8D9 /* CellDetails.swift */; };
+		B1E042D91F259C7600CF6145 /* CellDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1E042D81F259C7600CF6145 /* CellDetails.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		550AD9C11F290F9F00C8EA72 /* CreateEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEditViewController.swift; sourceTree = "<group>"; };
 		B1D05B471F24E2CF0052F8D9 /* RadioDataSqliteTbl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioDataSqliteTbl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D05B4A1F24E2D00052F8D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1D05B4C1F24E2D00052F8D9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +28,11 @@
 		B1D05B511F24E2D00052F8D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1D05B541F24E2D00052F8D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1D05B561F24E2D00052F8D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1D05B5C1F251AB40052F8D9 /* DBAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBAccess.swift; sourceTree = "<group>"; };
+		B1D05B5F1F251BA00052F8D9 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		B1D05B631F251C010052F8D9 /* RadioDataSqliteTbl-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RadioDataSqliteTbl-Bridging-Header.h"; sourceTree = "<group>"; };
+		B1D05B671F25972F0052F8D9 /* CellDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellDetails.swift; sourceTree = "<group>"; };
+		B1E042D81F259C7600CF6145 /* CellDetails.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellDetails.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1D05B601F251BA00052F8D9 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +52,8 @@
 			children = (
 				B1D05B491F24E2CF0052F8D9 /* RadioDataSqliteTbl */,
 				B1D05B481F24E2CF0052F8D9 /* Products */,
+				B1D05B5E1F251BA00052F8D9 /* Frameworks */,
+				B1D05B631F251C010052F8D9 /* RadioDataSqliteTbl-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +69,25 @@
 			isa = PBXGroup;
 			children = (
 				B1D05B4A1F24E2D00052F8D9 /* AppDelegate.swift */,
+				550AD9C11F290F9F00C8EA72 /* CreateEditViewController.swift */,
 				B1D05B4C1F24E2D00052F8D9 /* ViewController.swift */,
 				B1D05B4E1F24E2D00052F8D9 /* Main.storyboard */,
 				B1D05B511F24E2D00052F8D9 /* Assets.xcassets */,
 				B1D05B531F24E2D00052F8D9 /* LaunchScreen.storyboard */,
 				B1D05B561F24E2D00052F8D9 /* Info.plist */,
+				B1D05B5C1F251AB40052F8D9 /* DBAccess.swift */,
+				B1D05B671F25972F0052F8D9 /* CellDetails.swift */,
+				B1E042D81F259C7600CF6145 /* CellDetails.xib */,
 			);
 			path = RadioDataSqliteTbl;
+			sourceTree = "<group>";
+		};
+		B1D05B5E1F251BA00052F8D9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B1D05B5F1F251BA00052F8D9 /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +122,7 @@
 				TargetAttributes = {
 					B1D05B461F24E2CF0052F8D9 = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -125,6 +152,7 @@
 			files = (
 				B1D05B551F24E2D00052F8D9 /* LaunchScreen.storyboard in Resources */,
 				B1D05B521F24E2D00052F8D9 /* Assets.xcassets in Resources */,
+				B1E042D91F259C7600CF6145 /* CellDetails.xib in Resources */,
 				B1D05B501F24E2D00052F8D9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,6 +166,9 @@
 			files = (
 				B1D05B4D1F24E2D00052F8D9 /* ViewController.swift in Sources */,
 				B1D05B4B1F24E2D00052F8D9 /* AppDelegate.swift in Sources */,
+				B1D05B681F25972F0052F8D9 /* CellDetails.swift in Sources */,
+				B1D05B5D1F251AB40052F8D9 /* DBAccess.swift in Sources */,
+				550AD9C21F290F9F00C8EA72 /* CreateEditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,10 +293,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = RadioDataSqliteTbl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jdiczhazy.RadioDataSqliteTbl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RadioDataSqliteTbl-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -274,10 +308,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = RadioDataSqliteTbl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jdiczhazy.RadioDataSqliteTbl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RadioDataSqliteTbl-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -301,6 +337,7 @@
 				B1D05B5B1F24E2D00052F8D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
