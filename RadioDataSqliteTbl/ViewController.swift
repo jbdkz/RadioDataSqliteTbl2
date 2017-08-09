@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  RadioDataSqliteTbl
 //
-//  Created by John Diczhazy on 7/23/17.
+//  Created by John Diczhazy on 7/23/17....JRD
 //  Copyright © 2017 JohnDiczhazy. All rights reserved.
 //
 
