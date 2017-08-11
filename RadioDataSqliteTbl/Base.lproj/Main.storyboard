@@ -43,7 +43,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="Epz-jD-GVN" id="ssU-Cs-nUa"/>
+                        <outlet property="tableView" destination="Epz-jD-GVN" id="odd-f7-fjn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -141,14 +141,6 @@
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="backSegue" id="VjT-7M-P9O"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MzZ-wE-vAJ">
-                                <rect key="frame" x="14" y="311" width="57" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Delete"/>
-                                <connections>
-                                    <action selector="deleteRecord:" destination="1xv-fV-h2d" eventType="touchUpInside" id="ml4-tt-f4u"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SpS-qy-yqT">
                                 <rect key="frame" x="14" y="273" width="57" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -162,7 +154,6 @@
                     </view>
                     <connections>
                         <outlet property="createRecord" destination="b9G-cT-JT2" id="LGX-uc-BtG"/>
-                        <outlet property="deleteRecord" destination="MzZ-wE-vAJ" id="Joc-3v-jXi"/>
                         <outlet property="lineMake" destination="kLo-rk-CxR" id="OJB-tZ-19q"/>
                         <outlet property="lineModel" destination="UKh-iR-wyx" id="oPw-Qw-B8H"/>
                         <outlet property="lineROW" destination="VPY-Zx-VhO" id="7Tz-yH-VAN"/>

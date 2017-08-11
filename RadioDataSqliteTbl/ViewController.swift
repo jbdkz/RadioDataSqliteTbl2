@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  RadioDataSqliteTbl
 //
-//  Created by John Diczhazy on 7/23/17....JRD
+//  Created by John Diczhazy on 7/23/17.
 //  Copyright © 2017 JohnDiczhazy. All rights reserved.
 //
 
@@ -11,9 +11,10 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var sourceValue = " "
+    var lineStatus = " "
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //let data = Data()
         if let destinationController = segue.destination as? CreateEditViewController {
             destinationController.destValue = sourceValue
         }
@@ -64,11 +65,43 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
 
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let rowData = radioData[indexPath.row]
-        sourceValue = rowData["Row"] as! String
-        //print ("You selected \(rowData["Row"]!)")
-        self.performSegue(withIdentifier: "updateSegue", sender:tableView)
-            }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            
+            let uiAlert = UIAlertController(title: "Delete", message: "Confirm Delete Action", preferredStyle: UIAlertControllerStyle.alert)
+            self.present(uiAlert, animated: true, completion: nil)
+            
+            uiAlert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { action in
+                print("Click of default button")
+                
+                
+                let rowData = self.radioData[indexPath.row]
+                self.sourceValue = rowData["Row"] as! String
+                self.lineStatus = DBAccess.deleteRecord(row: Int32(self.sourceValue)!)
+                print(self.lineStatus)
+                //Reload data, otherwise, you will get a SIGABRT error
+                self.radioData = DBAccess.readAllRecords() as [Dictionary<String, AnyObject>]
+                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+                print(self.lineStatus)
+                
+            }))
+            
+            uiAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+                print("Click of cancel button")
+            }))
+
+        
+        }
+        
+        let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
+            let rowData = self.radioData[indexPath.row]
+                    self.sourceValue = rowData["Row"] as! String
+                    //print ("You selected \(rowData["Row"]!)")
+                    self.performSegue(withIdentifier: "updateSegue", sender:tableView)
+        }
+        
+        edit.backgroundColor = UIColor.blue
+        
+        return [delete, edit]
+    }
 }

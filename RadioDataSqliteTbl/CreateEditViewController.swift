@@ -25,8 +25,6 @@ class CreateEditViewController: UIViewController {
     
     @IBOutlet weak var updateRecord: UIButton!
     
-    @IBOutlet weak var deleteRecord: UIButton!
-    
     @IBAction func createRecord(_ sender: UIButton) {
         self.lineStatus.text = ""
         if validate() == true {
@@ -55,41 +53,17 @@ class CreateEditViewController: UIViewController {
         }
     }
     
-    @IBAction func deleteRecord(_ sender: UIButton) {
-        let uiAlert = UIAlertController(title: "Delete", message: "Confirm Delete Action", preferredStyle: UIAlertControllerStyle.alert)
-        self.present(uiAlert, animated: true, completion: nil)
-        
-        uiAlert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { action in
-            print("Click of default button")
-            self.lineStatus.text = DBAccess.deleteRecord(row: Int32(self.lineROW.text!)!)
-            self.performSegue(withIdentifier: "backSegue", sender:sender)
-            if self.lineStatus.text == "Record Deleted"{
-                self.lineROW.text = ""
-                self.lineMake.text = ""
-                self.lineModel.text = ""
-                self.lineSerialNO.text = ""
-            }
-            
-        }))
-        
-        uiAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
-            print("Click of cancel button")
-        }))
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         if (Int32(destValue)) != nil {
             createRecord.isHidden = true
             updateRecord.isHidden = false
-            deleteRecord.isHidden = false
             readRecord()
             self.lineMake.becomeFirstResponder()
     } else {
             createRecord.isHidden = false
             updateRecord.isHidden = true
-            deleteRecord.isHidden = true
-          }
+            }
     }
     
     func validate() ->Bool {
