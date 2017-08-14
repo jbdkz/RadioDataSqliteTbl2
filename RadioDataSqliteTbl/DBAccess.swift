@@ -117,6 +117,8 @@ class DBAccess {
 //        return myArray
 //    }
     
+    
+    
     class func readRecord(row: Int32) -> Array<String>{
         
         var database:OpaquePointer? = nil
@@ -175,6 +177,46 @@ class DBAccess {
     }
 
     class func readAllRecords() -> Array<Dictionary<String, AnyObject>> {
+        
+        var database:OpaquePointer? = nil
+        let result = sqlite3_open(dataFilePath(), &database)
+        var fieldRow: String = ""
+        var fieldMake: String = ""
+        var fieldModel: String = ""
+        var fieldSerialNO: String = ""
+        var myArray: [Dictionary<String, AnyObject>] = []
+        
+        if result != SQLITE_OK {
+            sqlite3_close(database)
+            print("Failed to open database")
+        }
+        
+        let query = "SELECT * FROM RadioData ORDER BY Make, Model"
+        var statement:OpaquePointer? = nil
+        if sqlite3_prepare_v2(database, query, -1, &statement, nil) == SQLITE_OK {
+            
+            while sqlite3_step(statement) == SQLITE_ROW {
+                let row = sqlite3_column_text(statement, 0)
+                let rowData = sqlite3_column_text(statement, 1)
+                let rowData1 = sqlite3_column_text(statement, 2)
+                let rowData2 = sqlite3_column_text(statement, 3)
+                
+                fieldRow = String(cString:(row!))
+                fieldMake = String(cString:(rowData!))
+                fieldModel = String(cString:(rowData1!))
+                fieldSerialNO = String(cString:(rowData2!))
+                
+                let RadioInfo = ["Row": fieldRow, "Make": fieldMake, "Model": fieldModel, "SerialNO": fieldSerialNO ]
+                
+                myArray.append(RadioInfo as [String : AnyObject])
+            }
+            sqlite3_finalize(statement)
+        }
+        sqlite3_close(database)
+        return myArray
+    }
+    
+    class func searchRecords(keyword: String) -> Array<Dictionary<String, AnyObject>> {
 
         var database:OpaquePointer? = nil
         let result = sqlite3_open(dataFilePath(), &database)
@@ -189,7 +231,7 @@ class DBAccess {
             print("Failed to open database")
         }
 
-        let query = "SELECT * FROM RadioData ORDER BY Make, Model"
+        let query = "SELECT ROW, Make, Model, SerialNO FROM RadioData WHERE Make = '\(keyword)' OR Model = '\(keyword)' OR SerialNO = '\(keyword)'"
         var statement:OpaquePointer? = nil
         if sqlite3_prepare_v2(database, query, -1, &statement, nil) == SQLITE_OK {
             

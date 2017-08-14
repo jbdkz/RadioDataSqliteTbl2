@@ -9,11 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
     var sourceValue = " "
     var lineStatus = " "
 
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationController = segue.destination as? CreateEditViewController {
             destinationController.destValue = sourceValue
@@ -25,12 +23,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     var radioData: [Dictionary<String, AnyObject>] = []
     let cellTableIdentifier = "CellTableIdentifier"
+    
     @IBOutlet var tableView:UITableView!
+    
+    
+    @IBOutlet weak var lineSearch: UITextField!
+    
+    @IBAction func searchBtn(_ sender: Any) {
+        if lineSearch.text == "" {
+            radioData = DBAccess.readAllRecords() as [Dictionary<String, AnyObject>]
+            tableView.reloadData()
+        } else {
+            radioData = DBAccess.searchRecords(keyword: lineSearch.text!) as [Dictionary<String, AnyObject>]
+            tableView.reloadData()
+       }
+    }
     
     override func viewDidLoad() {
         DBAccess.initDB()
         radioData = DBAccess.readAllRecords() as [Dictionary<String, AnyObject>]
-        
         super.viewDidLoad()
         tableView.register(CellDetails.self,
                            forCellReuseIdentifier: cellTableIdentifier)
@@ -38,6 +49,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.register(xib,
                            forCellReuseIdentifier: cellTableIdentifier)
         tableView.rowHeight = 86
+
     }
     
     override func didReceiveMemoryWarning() {
